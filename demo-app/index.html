@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demo Playwright - Formularios y Validaciones</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🚀 Demo de Pruebas Automatizadas con Playwright</h1>
+            <p>Formularios, validaciones y manejo de errores</p>
+        </header>
+
+        <nav class="tabs">
+            <button class="tab-button active" data-tab="registration">Registro de Usuario</button>
+            <button class="tab-button" data-tab="contact">Formulario de Contacto</button>
+            <button class="tab-button" data-tab="checkout">Proceso de Compra</button>
+        </nav>
+
+        <!-- Formulario de Registro -->
+        <div id="registration" class="tab-content active">
+            <div class="form-container">
+                <h2>📝 Registro de Usuario</h2>
+                <form id="registrationForm" class="demo-form">
+                    <div class="form-group">
+                        <label for="firstName">Nombre *</label>
+                        <input type="text" id="firstName" name="firstName" required>
+                        <span class="error-message" id="firstNameError"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="lastName">Apellido *</label>
+                        <input type="text" id="lastName" name="lastName" required>
+                        <span class="error-message" id="lastNameError"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email *</label>
+                        <input type="email" id="email" name="email" required>
+                        <span class="error-message" id="emailError"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password">Contraseña *</label>
+                        <input type="password" id="password" name="password" required minlength="8">
+                        <span class="error-message" id="passwordError"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="confirmPassword">Confirmar Contraseña *</label>
+                        <input type="password" id="confirmPassword" name="confirmPassword" required>
+                        <span class="error-message" id="confirmPasswordError"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="age">Edad *</label>
+                        <input type="number" id="age" name="age" required min="18" max="100">
+                        <span class="error-message" id="ageError"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label>
+                            <input type="checkbox" id="terms" name="terms" required>
+                            Acepto los términos y condiciones *
+                        </label>
+                        <span class="error-message" id="termsError"></span>
+                    </div>
+
+                    <button type="submit" class="submit-btn">Registrarse</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Formulario de Contacto -->
+        <div id="contact" class="tab-content">
+            <div class="form-container">
+                <h2>📧 Formulario de Contacto</h2>
+                <form id="contactForm" class="demo-form">
+                    <div class="form-group">
+                        <label for="contactName">Nombre Completo *</label>
+                        <input type="text" id="contactName" name="contactName" required>
+                        <span class="error-message" id="contactNameError"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="contactEmail">Email *</label>
+                        <input type="email" id="contactEmail" name="contactEmail" required>
+                        <span class="error-message" id="contactEmailError"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="subject">Asunto *</label>
+                        <select id="subject" name="subject" required>
+                            <option value="">Selecciona un asunto</option>
+                            <option value="support">Soporte Técnico</option>
+                            <option value="sales">Ventas</option>
+                            <option value="feedback">Comentarios</option>
+                            <option value="other">Otro</option>
+                        </select>
+                        <span class="error-message" id="subjectError"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Mensaje *</label>
+                        <textarea id="message" name="message" required minlength="10" maxlength="500"></textarea>
+                        <span class="error-message" id="messageError"></span>
+                        <div class="char-count">
+                            <span id="messageCount">0</span>/500 caracteres
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="priority">Prioridad</label>
+                        <div class="radio-group">
+                            <label><input type="radio" name="priority" value="low" checked> Baja</label>
+                            <label><input type="radio" name="priority" value="medium"> Media</label>
+                            <label><input type="radio" name="priority" value="high"> Alta</label>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="submit-btn">Enviar Mensaje</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Proceso de Compra -->
+        <div id="checkout" class="tab-content">
+            <div class="form-container">
+                <h2>🛒 Proceso de Compra</h2>
+                <form id="checkoutForm" class="demo-form">
+                    <div class="form-group">
+                        <label for="cardNumber">Número de Tarjeta *</label>
+                        <input type="text" id="cardNumber" name="cardNumber" required placeholder="1234 5678 9012 3456">
+                        <span class="error-message" id="cardNumberError"></span>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="expiryDate">Fecha de Vencimiento *</label>
+                            <input type="text" id="expiryDate" name="expiryDate" required placeholder="MM/AA">
+                            <span class="error-message" id="expiryDateError"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="cvv">CVV *</label>
+                            <input type="text" id="cvv" name="cvv" required placeholder="123">
+                            <span class="error-message" id="cvvError"></span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="cardName">Nombre en la Tarjeta *</label>
+                        <input type="text" id="cardName" name="cardName" required>
+                        <span class="error-message" id="cardNameError"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="billingAddress">Dirección de Facturación *</label>
+                        <textarea id="billingAddress" name="billingAddress" required></textarea>
+                        <span class="error-message" id="billingAddressError"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label>
+                            <input type="checkbox" id="saveCard" name="saveCard">
+                            Guardar información de tarjeta para futuras compras
+                        </label>
+                    </div>
+
+                    <button type="submit" class="submit-btn">Procesar Pago</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Área de Resultados -->
+        <div id="results" class="results-container" style="display: none;">
+            <h2>✅ Resultado del Envío</h2>
+            <div id="resultMessage" class="result-message"></div>
+            <button id="resetForm" class="reset-btn">Nuevo Formulario</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
